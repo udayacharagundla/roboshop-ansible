@@ -1,0 +1,13 @@
+
+
+- name: run python
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: python 
+
+- name : load systemd setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd_setup
+
+
