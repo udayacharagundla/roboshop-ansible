@@ -1,0 +1,4 @@
+default:
+        git pull
+        ansible-playbook -i $(appname)-dev.onebridge.online, -e ansible_user=devops18 ansible_password=Passw0rd@1234 -e role_name=$(appname) fronte
+nd.yml

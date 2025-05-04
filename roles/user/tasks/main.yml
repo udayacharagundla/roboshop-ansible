@@ -1,0 +1,11 @@
+- name: run node js
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: nodejs
+
+
+- name : load systemd setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd_setup
+
