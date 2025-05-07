@@ -1,0 +1,5 @@
+- name: Deploy RoboShop Project with User Input
+  hosts: all
+  become: true
+  roles:
+    - "{{ role_name }}"
