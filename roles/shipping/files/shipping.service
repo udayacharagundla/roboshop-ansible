@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 User=roboshop
-#Environment="CART_ENDPOINT=cart.dev:8080"
-Environment="CART_ENDPOINT=cart.dev:8080"
+#Environment="CART_ENDPOINT=cart-dev-yourtherapist.in:8080"
+Environment="CART_ENDPOINT=cart.dev-yourtherapist.in:8080"
 #Environment="DB_HOST=10.0.0.16"
-Environment="DB_HOST=mongodb.dev"
+Environment="DB_HOST=mongodb-dev.yourtherapist.in"
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
 Restart=always
