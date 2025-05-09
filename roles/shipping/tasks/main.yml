@@ -1,25 +1,23 @@
- - name: run java
-   ansible.builtin.include_role:
+- name: Run Java setup tasks
+  ansible.builtin.include_role:
     name: common
     tasks_from: java
 
- - name: install mysql
-   ansible.builtin.dnf:
-     name: mysql
-     state: latest
+- name: Install MySQL
+  ansible.builtin.dnf:
+    name: mysql
+    state: latest
 
- - name: load schema data base
-   ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -pRoboShop@1 < /app/db/schema.sql
+- name: Load schema database
+  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/schema.sql
 
- - name: load app-user
-   ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in  -uroot -pRoboShop@1 < /app/db/app-user.sql
+- name: Load app-user data
+  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/app-user.sql
 
- - name: load master-data
-   ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in  -uroot -pRoboShop@1 < /app/db/master-data.sql
-     
- 
- - name : load systemd setup
-   ansible.builtin.include_role:
+- name: Load master-data
+  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/master-data.sql
+
+- name: Run systemd setup tasks
+  ansible.builtin.include_role:
     name: common
     tasks_from: systemd_setup
-    
