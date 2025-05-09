@@ -9,13 +9,13 @@
     state: latest
 
 - name: Load schema database
-  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/schema.sql
+  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/schema.sql
 
 - name: Load app-user data
-  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/app-user.sql
+  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/app-user.sql
 
 - name: Load master-data
-  ansible.builtin.shell: mysql -h sql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/master-data.sql
+  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/master-data.sql
 
 - name: Run systemd setup tasks
   ansible.builtin.include_role:
