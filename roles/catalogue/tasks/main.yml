@@ -16,7 +16,7 @@
     state: latest
 
 - name: load master data
-  ansible.builtin.shell: mongosh --host 10.0.0.13  </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host mongodb-dev.yourtherapist.in  </app/db/master-data.js
 
 - name : load systemd setup
   ansible.builtin.include_role:
