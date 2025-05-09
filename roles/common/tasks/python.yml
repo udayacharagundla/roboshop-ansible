@@ -10,7 +10,7 @@
   ansible.builtin.include_tasks:
     file: app_pre_setup.yml
 
-- name: Download APp dependencies
+- name: Download App dependencies
   ansible.builtin.shell: pip3 install -r requirements.txt
   args:
     chdir: /app
