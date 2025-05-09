@@ -3,10 +3,15 @@ Description=Shipping Service
 
 [Service]
 User=roboshop
-Environment=shipping-dev.yourtherapist.in:8080
+Environment=CART_ENDPOINT=shipping-dev.yourtherapist.in:8080
 Environment=DB_HOST=mysql-dev.yourtherapist.in
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
 
 [Install]
 WantedBy=multi-user.target
+
+
+
+
+
