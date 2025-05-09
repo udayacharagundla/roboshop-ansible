@@ -1,14 +1,12 @@
 [Unit]
 Description=Shipping Service
-After=network.target
 
 [Service]
 User=roboshop
-Environment="CART_ENDPOINT=cart-dev.yourtherapist.in:8080"
-Environment="DB_HOST=mongodb-dev.yourtherapist.in"
+Environment=shipping-dev.yourtherapist.in>:8080
+Environment=DB_HOST=mysql-dev.yourtherapist.in
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
 
 [Install]
 WantedBy=multi-user.target
-#
