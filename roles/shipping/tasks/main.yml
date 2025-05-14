@@ -8,14 +8,21 @@
     name: mysql
     state: latest
 
-- name: Load schema database
-  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/schema.sql
+#- name: Load schema database
+#  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/schema.sql
+#
+#- name: Load app-user data
+#  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/app-user.sql
+#
+#- name: Load master-data
+#  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/master-data.sql
 
-- name: Load app-user data
-  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/app-user.sql
-
-- name: Load master-data
-  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -uroot -p'RoboShop@1' < /app/db/master-data.sql
+- name: load to db
+  ansible.builtin.shell: mysql -h mysql-dev.yourtherapist.in -u{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:username token={{ token }} url=http://vault.yourtherapist.in:8200') }} -p '{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:password token={{ token }} url=http://vault.yourtherapist.in:8200') }} < /app/db/{{ item }}.sql
+  loop:
+    - schema
+    - app-user
+    - master-data
 
 - name: Run systemd setup tasks
   ansible.builtin.include_role:
