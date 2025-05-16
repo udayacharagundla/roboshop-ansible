@@ -16,8 +16,8 @@
  
 - name: create app user
   community.rabbitmq.rabbitmq_user:
-    user: {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:USER token={{ token }} url=http://vault.yourtherapist.in:8200') }}
-    password: {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:PASSWORD token={{ token }} url=http://vault.yourtherapist.in:8200') }}
+    user: {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/frontend-robo{{ app_name }}:USER token={{ token }} url=http://vault.yourtherapist.in:8200') }}
+    password: {{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/frontend-robo{{ app_name }}:PASSWORD token={{ token }} url=http://vault.yourtherapist.in:8200') }}
     vhost: /
     configure_priv: .*
     read_priv: .*
