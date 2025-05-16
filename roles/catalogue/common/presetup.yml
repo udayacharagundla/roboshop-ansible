@@ -2,12 +2,12 @@
   ansible.builtin.shell: dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
 
 - name: add nodejs userid
-    ansible.builtin.user:
+  ansible.builtin.user:
       name: roboshop
       state: present
 
 - name: create directory for application
-    ansible.builtin.file:
+  ansible.builtin.file:
       name: app
       state: directory
 
