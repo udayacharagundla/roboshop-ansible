@@ -10,7 +10,6 @@
   ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
-    remote_option: yes
 
 - name: Remove default content directory
   ansible.builtin.file:
