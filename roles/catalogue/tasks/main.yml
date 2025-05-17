@@ -18,7 +18,7 @@
 - name: load master data
   ansible.builtin.shell: mongosh --host mongodb-dev.yourtherapist.in  </app/db/master-data.js
 
-- name : load systemd setup
+- name: Run systemd_setup
   ansible.builtin.include_role:
     name: common
     tasks_from: systemd_setup
