@@ -7,9 +7,10 @@
     state: latest
 
 - name: Copy nginx config file
-  ansible.builtin.copy:
-    src: nginx.conf.j2
+  ansible.builtin.template:
+    src: nginx.conf
     dest: /etc/nginx/nginx.conf
+    remote_option: yes
 
 - name: Remove default content directory
   ansible.builtin.file:
