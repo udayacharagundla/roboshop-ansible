@@ -9,4 +9,4 @@
      name: {{ app_name }}
      state: restarted
      enabled: yes
-     deamon_reload: yes   
+     demon_reload: yes
