@@ -7,8 +7,10 @@ User=roboshop
 #Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:MONGO_URL token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
 #Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/{{ app_name }}:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
 #Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/{{ app_name }}:MONGO_URL token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
-Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
-Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO_URL token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
+Environment=MONGO=true
+Environment=MONGO_URL="mongodb://10.0.0.11:27017/catalogue"
+#Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
+#Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO_URL token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=catalogue
 
