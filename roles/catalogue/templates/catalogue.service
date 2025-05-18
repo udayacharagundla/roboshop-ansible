@@ -1,35 +1,33 @@
-#[Unit]
-#Description=Catalogue Service
-#
-#[Service]
-#User=roboshop
-##Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
-##Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/{{ app_name }}:MONGO_URL token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
+[Unit]
+Description=Catalogue Service
+
+[Service]
+User=roboshop
+Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/data/catalogue:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
+Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/data/catalogue:MONGO_URL token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
 #Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/{{ app_name }}:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
 #Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/{{ app_name }}:MONGO_URL token={{ token }} url=http://vault.yourtherapist.in:8200') }}"
 ##Environment=MONGO=true
 ##Environment=MONGO_URL="mongodb://mongodb-dev.yourtherapist.in:27017/catalogue"
 ##Environment="MONGO={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
 ##Environment="MONGO_URL={{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-dev/catalogue:MONGO_URL token=hvs.vDmeXxoN570Y46tfqceaShiB url=http://vault.yourtherapist.in:8200') }}"
-#ExecStart=/bin/node /app/server.js
-#SyslogIdentifier=catalogue
-#
-#
-#[Install]
-#WantedBy=multi-user.target
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=catalogue
+[Install]
+WantedBy=multi-user.target
 ##
 
 
 
-[Unit]
-Description = Catalogue Service
-
-[Service]
-User=roboshop
-Environment=MONGO={{ secrets.MONGO }}
-Environment=MONGO_URL="{{ secrets.MONGO_URL }}"
-ExecStart=/bin/node /app/server.js
-SyslogIdentifier=catalogue
-
-[Install]
-WantedBy=multi-user.target
+#[Unit]
+#Description = Catalogue Service
+#
+#[Service]
+#User=roboshop
+#Environment=MONGO={{ secrets.MONGO }}
+#Environment=MONGO_URL="{{ secrets.MONGO_URL }}"
+#ExecStart=/bin/node /app/server.js
+#SyslogIdentifier=catalogue
+#
+#[Install]
+#WantedBy=multi-user.target

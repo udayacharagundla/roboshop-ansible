@@ -3,4 +3,4 @@ app_path: /app
 schema_setup: mongo
 schema_files:
   - master-data
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/catalogue:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200 validate_certs=false') }}"
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-{{ env }}/data/catalogue:MONGO token={{ token }} url=http://vault.yourtherapist.in:8200 validate_certs=false') }}"
