@@ -1,1 +1,7 @@
-#secrets: "{{ lookup('hashi_vault', 'secret=roboshop-{{env}}/data/frontend-robo token={{ token }} url=https://vault.yourtherapist.in:8200 validate_certs=false')}}"
+- name: Set backend URLs from Vault
+  set_fact:
+    catalogue_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:catalogue_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
+    user_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:user_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
+    cart_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:cart_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
+    shipping_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:shipping_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
+    payment_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:payment_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
