@@ -1,0 +1,1 @@
+#secrets: "{{ lookup('hashi_vault', 'secret=roboshop-{{env}}/data/frontend-robo token={{ token }} url=https://vault.yourtherapist.in:8200 validate_certs=false')}}"
