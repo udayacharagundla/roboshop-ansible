@@ -33,3 +33,8 @@
     state: started
     name: nginx
     enabled: true
+
+- name: Fetch catalogue_url from Vault
+  set_fact:
+    catalogue_url: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-' ~ env ~ '/data/frontend-robo:catalogue_url token=' ~ token ~ ' url=http://vault.yourtherapist.in:8200') }}"
+
